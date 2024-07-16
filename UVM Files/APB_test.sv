@@ -6,9 +6,7 @@ import APB_env_pkg::*;
 import APB_reset_sequence_pkg::*;
 import APB_write_sequence_pkg::*;
 import APB_read_sequence_pkg::*;
-import APB_write_with_wait_sequence_pkg::*;
-import APB_read_with_wait_sequence_pkg::*;
-
+	
 import APB_config_pkg::*;
 
 	class APB_test extends uvm_component;
@@ -20,8 +18,6 @@ import APB_config_pkg::*;
 		APB_reset_sequence reset_sequence;
 		APB_write_sequence write_sequence;
 		APB_read_sequence read_sequence;
-		APB_write_with_wait_sequence write_with_wait_sequence;
-		APB_read_with_wait_sequence read_with_wait_sequence;
 		// config object to get the if
 		APB_config APB_cfg;
 
@@ -37,8 +33,6 @@ import APB_config_pkg::*;
 			reset_sequence=APB_reset_sequence::type_id::create("reset_sequence");
 			write_sequence=APB_write_sequence::type_id::create("write_sequence");
 			read_sequence=APB_read_sequence::type_id::create("read_sequence");
-			write_with_wait_sequence=APB_write_with_wait_sequence::type_id::create("write_with_wait_sequence");
-			read_with_wait_sequence=APB_read_with_wait_sequence::type_id::create("read_with_wait_sequence");
 			APB_cfg=APB_config::type_id::create("APB_cfg");
 			// get the IF
 			if (!uvm_config_db#(virtual APB_if)::get(this, "", "APB_IF", APB_cfg.APB_vif)) begin
